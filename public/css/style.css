@@ -1,0 +1,15 @@
+.tasks-buttons {
+    padding: 10px;
+}
+
+.float-right {
+    float: right;
+}
+
+.modal-preview {
+    max-width: 100%;
+}
+
+.task-card {
+    margin: 5px 0;
+}
