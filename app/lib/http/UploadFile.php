@@ -37,7 +37,7 @@ class UploadFile
         $this->error    = $error;
 
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/' . \Constants::IMG_UPLOAD_DIR;
-        $this->uploadFile = "{$uploadDir}/{$basename}";
+        $this->uploadFile = $this->makeFileName($uploadDir);
     }
 
 
@@ -104,5 +104,20 @@ class UploadFile
     public function getError(): int
     {
         return $this->error;
+    }
+
+
+    /**
+     * Создает уникальное имя для файла
+     *
+     * @param $uploadDir
+     * @return string
+     */
+    private function makeFileName(string $uploadDir): string
+    {
+        $filename = md5(time());
+        $ext = pathinfo($this->fileName, PATHINFO_EXTENSION);
+
+        return "$uploadDir/$filename.$ext";
     }
 }
